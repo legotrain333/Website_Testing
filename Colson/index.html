@@ -15,6 +15,7 @@
       --ebony-light: #2d2520;
       --accent: #8b6914;
       --accent-soft: #c9a227;
+      --gold: #c9a227;
       --shadow: rgba(26, 22, 20, 0.15);
     }
 
@@ -64,6 +65,89 @@
       gap: 0;
       height: 100%;
       padding: 0 2px;
+    }
+
+    .mobile-nav {
+      display: none;
+      background: var(--ebony);
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .mobile-nav input[type="checkbox"] {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--ivory);
+      background: none;
+      border: none;
+      padding: 0.5rem;
+    }
+
+    .hamburger::before {
+      content: "☰";
+    }
+
+    .mobile-nav input[type="checkbox"]:checked ~ .hamburger::before {
+      content: "✕";
+    }
+
+    .mobile-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      flex-direction: column;
+      gap: 2rem;
+      background: var(--ebony);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: none;
+    }
+
+    .mobile-nav input[type="checkbox"]:checked ~ ul {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: var(--ivory);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem;
+      display: block;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--gold);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--ivory);
+      font-size: 2rem;
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: var(--gold);
     }
 
     .piano-keys a.key {
@@ -120,16 +204,18 @@
     }
 
     .key.white[data-link="hero"] { order: 0; }
-    .key.black[data-link="bio"] { order: 1; }
-    .key.white[data-link="bio"] { order: 2; }
-    .key.black[data-link="projects"] { order: 3; }
-    .key.white[data-link="projects"] { order: 4; }
-    .key.black[data-link="recordings"] { order: 5; }
-    .key.white[data-link="recordings"] { order: 6; }
-    .key.black[data-link="scores"] { order: 7; }
-    .key.white[data-link="scores"] { order: 8; }
-    .key.black[data-link="contact"] { order: 9; }
-    .key.white[data-link="contact"] { order: 10; }
+    .key.black[data-link="videos"] { order: 1; }
+    .key.white[data-link="videos"] { order: 2; }
+    .key.black[data-link="bio"] { order: 3; }
+    .key.white[data-link="bio"] { order: 4; }
+    .key.black[data-link="projects"] { order: 5; }
+    .key.white[data-link="projects"] { order: 6; }
+    .key.black[data-link="recordings"] { order: 7; }
+    .key.white[data-link="recordings"] { order: 8; }
+    .key.black[data-link="scores"] { order: 9; }
+    .key.white[data-link="scores"] { order: 10; }
+    .key.black[data-link="contact"] { order: 11; }
+    .key.white[data-link="contact"] { order: 12; }
 
     /* ——— HERO ——— */
     .hero {
@@ -281,6 +367,46 @@
       opacity: 0.85;
     }
 
+    /* ——— VIDEOS (YouTube) ——— */
+    .video-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    section.black-key .video-item {
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .video-item:last-child {
+      border-bottom: none;
+    }
+
+    .video-item iframe {
+      flex: 1;
+      min-width: 300px;
+      height: 200px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .video-item .info {
+      min-width: 180px;
+    }
+
+    .video-item .info strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .video-item .info span {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
     /* ——— SHEET MUSIC (download list) ——— */
     .scores-intro {
       margin-bottom: 1.5rem;
@@ -411,22 +537,29 @@
       background: var(--ivory-dark);
     }
 
-    /* ——— RESPONSIVE ——— */
     @media (max-width: 640px) {
+      .piano-keys {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+
       .piano-header {
-        height: 90px;
+        height: auto;
       }
 
       .piano-keys .key.white {
-        min-width: 44px;
-        font-size: 0.8rem;
+        min-width: 60px;
+        font-size: 1.2rem;
         padding-bottom: 4px;
       }
 
       .piano-keys .key.black {
-        width: 16px;
-        margin-left: -8px;
-        margin-right: -8px;
+        width: 20px;
+        margin-left: -10px;
+        margin-right: -10px;
       }
 
       .recording-item {
@@ -435,6 +568,15 @@
       }
 
       .recording-item audio {
+        width: 100%;
+      }
+
+      .video-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .video-item iframe {
         width: 100%;
       }
 
@@ -452,6 +594,8 @@
   <header class="piano-header">
     <nav class="piano-keys">
       <a href="#hero" class="key white" data-link="hero" aria-label="Home">Home</a>
+      <span class="key black" data-link="videos" aria-hidden="true"></span>
+      <a href="#videos" class="key white" data-link="videos" aria-label="Videos">Watch</a>
       <span class="key black" data-link="bio" aria-hidden="true"></span>
       <a href="#bio" class="key white" data-link="bio" aria-label="Bio">Bio</a>
       <span class="key black" data-link="projects" aria-hidden="true"></span>
@@ -463,6 +607,20 @@
       <span class="key black" data-link="contact" aria-hidden="true"></span>
       <a href="#contact" class="key white" data-link="contact" aria-label="Contact">Contact</a>
     </nav>
+    <nav class="mobile-nav">
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="hamburger"></label>
+      <ul>
+        <li><button class="close-btn" aria-label="Close menu">✕</button></li>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#videos">Watch</a></li>
+        <li><a href="#bio">Bio</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#recordings">Listen</a></li>
+        <li><a href="#scores">Scores</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
@@ -471,6 +629,27 @@
       <p class="tagline">Classical Piano Portfolio</p>
       <p class="subtagline">Bach · Beethoven · Beyond</p>
       <div class="composers">Johann Sebastian Bach · Ludwig van Beethoven</div>
+    </section>
+
+    <section id="videos" class="white-key">
+      <h2>Video Performances</h2>
+      <p style="margin-bottom: 1.5rem;">Watch live performances, recitals, and behind-the-scenes footage.</p>
+      <div class="videos-list">
+        <div class="video-item">
+          <div class="info">
+            <strong>Bach — Prelude in C, BWV 846</strong>
+            <span>Live Performance</span>
+          </div>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+        <div class="video-item">
+          <div class="info">
+            <strong>Beethoven — Moonlight Sonata</strong>
+            <span>Studio Recording</span>
+          </div>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+      </div>
     </section>
 
     <section id="bio" class="white-key">
@@ -693,11 +872,18 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.piano-keys a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('.piano-keys a[href^="#"], .mobile-nav a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Close mobile menu when a link is clicked or close button
+    document.querySelectorAll('.mobile-nav a, .close-btn').forEach(el => {
+      el.addEventListener('click', () => {
+        document.getElementById('menu-toggle').checked = false;
       });
     });
   </script>
