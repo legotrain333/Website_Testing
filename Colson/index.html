@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colson Agin | Classical Piano Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivory: #f5f0e8;
+      --ivory-dark: #e8dfd0;
+      --ebony: #1a1614;
+      --ebony-light: #2d2520;
+      --accent: #8b6914;
+      --accent-soft: #c9a227;
+      --shadow: rgba(26, 22, 20, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--ebony);
+      background: var(--ivory);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+
+    /* ——— PIANO KEYS HEADER (full width) ——— */
+    .piano-header {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(180deg, var(--ebony) 0%, var(--ebony-light) 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+      overflow: visible;
+    }
+
+    .piano-keys {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex: 1 1 100%;
+      min-width: 100%;
+      gap: 0;
+      height: 100%;
+      padding: 0 2px;
+    }
+
+    .piano-keys a.key {
+      text-decoration: none;
+    }
+
+    .key {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      overflow: visible;
+    }
+
+    .key:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .key.white {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 100%;
+      border-radius: 5px 5px 0 0;
+      background: linear-gradient(180deg, var(--ivory-dark) 0%, var(--ivory) 65%, #fff 100%);
+      border: 1px solid rgba(0,0,0,0.06);
+      color: var(--ebony);
+      z-index: 1;
+      align-items: flex-start;
+      padding-top: 6px;
+    }
+
+    .key.black {
+      flex: 0 0 auto;
+      width: 20px;
+      height: 58%;
+      margin-left: -10px;
+      margin-right: -10px;
+      border-radius: 0 0 5px 5px;
+      background: linear-gradient(180deg, #0d0b09 0%, var(--ebony) 55%, #352e28 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 4px rgba(0,0,0,0.3);
+      border: none;
+      z-index: 2;
+      color: var(--ivory);
+      cursor: default;
+      align-items: flex-end;
+      padding-bottom: 4px;
+    }
+
+    .key.white[data-link="hero"] { order: 0; }
+    .key.black[data-link="bio"] { order: 1; }
+    .key.white[data-link="bio"] { order: 2; }
+    .key.black[data-link="projects"] { order: 3; }
+    .key.white[data-link="projects"] { order: 4; }
+    .key.black[data-link="recordings"] { order: 5; }
+    .key.white[data-link="recordings"] { order: 6; }
+    .key.black[data-link="scores"] { order: 7; }
+    .key.white[data-link="scores"] { order: 8; }
+    .key.black[data-link="contact"] { order: 9; }
+    .key.white[data-link="contact"] { order: 10; }
+
+    /* ——— HERO ——— */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: 
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(0,0,0,0.02) 60px,
+          rgba(0,0,0,0.02) 61px
+        ),
+        var(--ivory);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--ebony);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero .tagline {
+      font-size: 1.15rem;
+      color: var(--ebony-light);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero .subtagline {
+      font-size: 1rem;
+      color: var(--ebony-light);
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero .composers {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ——— SECTIONS (alternating keys) ——— */
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section.white-key {
+      background: var(--ivory);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    section.black-key {
+      background: var(--ebony);
+      color: var(--ivory);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    section.black-key h2,
+    section.black-key h3 {
+      color: var(--ivory);
+    }
+
+    section.black-key a {
+      color: var(--accent-soft);
+    }
+
+    section.black-key a:hover {
+      color: var(--ivory);
+    }
+
+    section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    section.black-key h2 {
+      border-color: var(--accent-soft);
+    }
+
+    /* ——— BIO ——— */
+    .bio-text {
+      font-size: 1.05rem;
+      max-width: 65ch;
+    }
+
+    .bio-text p {
+      margin-bottom: 1rem;
+    }
+
+    /* ——— MUSIC PROJECTS (uses same styles as Sheet Music) ——— */
+    .projects-intro {
+      margin-bottom: 1.5rem;
+      opacity: 0.92;
+      font-size: 1rem;
+    }
+
+    /* ——— RECORDINGS (MP3) ——— */
+    .recording-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    section.black-key .recording-item {
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .recording-item:last-child {
+      border-bottom: none;
+    }
+
+    .recording-item audio {
+      flex: 1;
+      min-width: 200px;
+      height: 40px;
+    }
+
+    .recording-item .info {
+      min-width: 180px;
+    }
+
+    .recording-item .info strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .recording-item .info span {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* ——— SHEET MUSIC (download list) ——— */
+    .scores-intro {
+      margin-bottom: 1.5rem;
+      opacity: 0.92;
+      font-size: 1rem;
+    }
+
+    .scores-intro code {
+      font-size: 0.9em;
+      padding: 0.1em 0.35em;
+      background: rgba(0,0,0,0.06);
+      border-radius: 3px;
+    }
+
+    .scores-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .scores-list li {
+      margin: 0;
+      padding: 0;
+    }
+
+    .score-item {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      padding: 1rem 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      transition: background 0.2s ease;
+    }
+
+    .score-item:last-child {
+      border-bottom: none;
+    }
+
+
+    .score-item .composer {
+      flex-shrink: 0;
+      width: 8.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-right: 0;
+    }
+
+    .score-item .piece {
+      flex: 1 1 0;
+      min-width: 220px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ebony);
+      line-height: 1.4;
+      margin-right: 0;
+    }
+
+    .score-item .download {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-left: auto;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .score-item .download:hover {
+      color: var(--ebony);
+    }
+
+    .score-item .download::after {
+      content: "↓";
+      font-size: 0.75em;
+    }
+
+    /* ——— Music Projects buttons ——— */
+    .score-item .buttons {
+      flex-shrink: 0;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .score-item .buttons a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--accent);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .score-item .buttons a:hover {
+      color: var(--ebony);
+    }
+
+    /* ——— CONTACT ——— */
+    .contact p {
+      margin-bottom: 1rem;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--ebony-light);
+      background: var(--ivory-dark);
+    }
+
+    /* ——— RESPONSIVE ——— */
+    @media (max-width: 640px) {
+      .piano-header {
+        height: 90px;
+      }
+
+      .piano-keys .key.white {
+        min-width: 44px;
+        font-size: 0.8rem;
+        padding-bottom: 4px;
+      }
+
+      .piano-keys .key.black {
+        width: 16px;
+        margin-left: -8px;
+        margin-right: -8px;
+      }
+
+      .recording-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .recording-item audio {
+        width: 100%;
+      }
+
+      .score-item .composer {
+        min-width: 0;
+      }
+
+      .score-item .piece {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="piano-header">
+    <nav class="piano-keys">
+      <a href="#hero" class="key white" data-link="hero" aria-label="Home">Home</a>
+      <span class="key black" data-link="bio" aria-hidden="true"></span>
+      <a href="#bio" class="key white" data-link="bio" aria-label="Bio">Bio</a>
+      <span class="key black" data-link="projects" aria-hidden="true"></span>
+      <a href="#projects" class="key white" data-link="projects" aria-label="Projects">Work</a>
+      <span class="key black" data-link="recordings" aria-hidden="true"></span>
+      <a href="#recordings" class="key white" data-link="recordings" aria-label="Recordings">Listen</a>
+      <span class="key black" data-link="scores" aria-hidden="true"></span>
+      <a href="#scores" class="key white" data-link="scores" aria-label="Scores">Scores</a>
+      <span class="key black" data-link="contact" aria-hidden="true"></span>
+      <a href="#contact" class="key white" data-link="contact" aria-label="Contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <h1>Colson Agin</h1>
+      <p class="tagline">Classical Piano Portfolio</p>
+      <p class="subtagline">Bach · Beethoven · Beyond</p>
+      <div class="composers">Johann Sebastian Bach · Ludwig van Beethoven</div>
+    </section>
+
+    <section id="bio" class="white-key">
+      <h2>Artist Bio</h2>
+      <div class="bio-text">
+        <p>I am <strong>Colson Agin</strong>, a classical pianist devoted to the works of Bach and Beethoven. My approach blends respect for historical performance practice with a personal, intimate reading of each piece.</p>
+        <p>From the intricate counterpoint of the <em>Well-Tempered Clavier</em> to the dramatic architecture of Beethoven's sonatas, I seek to communicate the structure, emotion, and clarity of this repertoire through the piano.</p>
+        <p>This site is a place to share my performances, recordings, and sheet music—a small window into my ongoing work with these composers.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="white-key">
+      <h2>Music Projects</h2>
+      <p class="projects-intro">A selection of classical piano projects and repertoire.</p>
+      <ul class="scores-list">
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Prelude & Fugue in C major, BWV 846</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Prelude & Fugue in C minor, BWV 847</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">L. van Beethoven</span>
+            <span class="piece">Piano Sonata No. 14 "Moonlight", Op. 27 No. 2</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Italian Concerto, BWV 971</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">L. van Beethoven</span>
+            <span class="piece">Piano Sonata No. 8 "Pathétique", Op. 13</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Partita No. 1 in B flat, BWV 825</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">L. van Beethoven</span>
+            <span class="piece">Piano Sonata No. 21 "Waldstein", Op. 53</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">French Suite No. 5 in G, BWV 816</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">L. van Beethoven</span>
+            <span class="piece">Bagatelles, Op. 126</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Chromatic Fantasia & Fugue, BWV 903</span>
+            <div class="buttons">
+              <a href="#recordings">Listen</a>
+              <a href="#scores">Score</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="recordings" class="white-key">
+      <h2>Audio Recordings</h2>
+      <p style="margin-bottom: 1.5rem;">MP3 recordings of live and studio performances. Replace the <code>src</code> below with your own files.</p>
+      <div class="recordings-list">
+        <div class="recording-item">
+          <div class="info">
+            <strong>Bach — Prelude in C, BWV 846</strong>
+            <span>Well-Tempered Clavier I</span>
+          </div>
+          <audio controls preload="metadata">
+            <source src="audio/bach-prelude-c.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="recording-item">
+          <div class="info">
+            <strong>Beethoven — Moonlight Sonata, I. Adagio</strong>
+            <span>Op. 27 No. 2</span>
+          </div>
+          <audio controls preload="metadata">
+            <source src="audio/beethoven-moonlight-i.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="recording-item">
+          <div class="info">
+            <strong>Bach — Fugue in C minor, BWV 847</strong>
+            <span>Well-Tempered Clavier I</span>
+          </div>
+          <audio controls preload="metadata">
+            <source src="audio/bach-fugue-cm.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <div class="recording-item">
+          <div class="info">
+            <strong>Beethoven — Pathétique, II. Adagio</strong>
+            <span>Op. 13</span>
+          </div>
+          <audio controls preload="metadata">
+            <source src="audio/beethoven-pathetique-ii.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <section id="scores" class="white-key">
+      <h2>Sheet Music</h2>
+      <p class="scores-intro">Downloadable scores (PDF). Add your own files in the <code>scores/</code> folder and link them here.</p>
+      <ul class="scores-list">
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Well-Tempered Clavier I — Prelude in C, BWV 846</span>
+            <a href="scores/bach-wtc1-prelude-c.pdf" class="download" download>PDF</a>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Well-Tempered Clavier I — Fugue in C minor, BWV 847</span>
+            <a href="scores/bach-wtc1-fugue-cm.pdf" class="download" download>PDF</a>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">L. van Beethoven</span>
+            <span class="piece">Piano Sonata No. 14 "Moonlight", Op. 27 No. 2</span>
+            <a href="scores/beethoven-moonlight-op27-2.pdf" class="download" download>PDF</a>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">L. van Beethoven</span>
+            <span class="piece">Piano Sonata No. 8 "Pathétique", Op. 13</span>
+            <a href="scores/beethoven-pathetique-op13.pdf" class="download" download>PDF</a>
+          </div>
+        </li>
+        <li>
+          <div class="score-item">
+            <span class="composer">J.S. Bach</span>
+            <span class="piece">Italian Concerto, BWV 971</span>
+            <a href="scores/bach-italian-concerto.pdf" class="download" download>PDF</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="white-key">
+      <h2>Contact</h2>
+      <div class="contact">
+        <p>For collaborations, performance inquiries, or feedback on my work, please reach out.</p>
+        <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+        <p>You can also find me on your preferred platform—update this section with your links.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Colson Agin — Classical Piano Portfolio · © 2025</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.piano-keys a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
