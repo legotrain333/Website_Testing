@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Classical Piano Portfolio of Colson Agin, featuring performances of Bach and Beethoven works, sheet music, and video recordings.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://via.placeholder.com;">
   <title>Colson Agin | Classical Piano Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap"></noscript>
   <style>
     :root {
       --ivory: #f5f0e8;
@@ -265,7 +267,7 @@
       flex-wrap: wrap;
       justify-content: center;
       font-size: 0.95rem;
-      color: var(--accent);
+      color: var(--ebony);
       font-weight: 500;
     }
 
@@ -455,7 +457,7 @@
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--ebony);
       margin-right: 0;
     }
 
@@ -474,7 +476,7 @@
       flex-shrink: 0;
       font-size: 0.85rem;
       font-weight: 500;
-      color: var(--accent);
+      color: var(--ebony);
       display: flex;
       align-items: center;
       gap: 0.35rem;
@@ -640,14 +642,14 @@
             <strong>Bach — Prelude in C, BWV 846</strong>
             <span>Live Performance</span>
           </div>
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen title="YouTube video of Bach Prelude in C live performance"></iframe>
         </div>
         <div class="video-item">
           <div class="info">
             <strong>Beethoven — Moonlight Sonata</strong>
             <span>Studio Recording</span>
           </div>
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen title="YouTube video of Beethoven Moonlight Sonata studio recording"></iframe>
         </div>
       </div>
     </section>
